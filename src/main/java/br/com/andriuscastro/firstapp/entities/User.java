@@ -2,9 +2,12 @@ package br.com.andriuscastro.firstapp.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,10 @@ public class User implements Serializable {
 
     @Column(length = 100)
     private String password;
+
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
+
 
     public User() {
     }
@@ -72,6 +79,12 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
 
     @Override
     public boolean equals(Object o) {
