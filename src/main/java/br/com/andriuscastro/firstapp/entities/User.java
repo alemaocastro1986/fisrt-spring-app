@@ -1,13 +1,25 @@
 package br.com.andriuscastro.firstapp.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 150)
     private String name;
+
+    @Column(unique = true, length = 150)
     private String email;
+
+    @Column(length = 50)
     private String phone;
+
+    @Column(length = 100)
     private String password;
 
     public User() {
