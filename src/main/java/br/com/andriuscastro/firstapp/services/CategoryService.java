@@ -1,10 +1,7 @@
 package br.com.andriuscastro.firstapp.services;
 
 import br.com.andriuscastro.firstapp.entities.Category;
-import br.com.andriuscastro.firstapp.entities.Order;
-import br.com.andriuscastro.firstapp.entities.User;
 import br.com.andriuscastro.firstapp.repositories.ICategoryRepository;
-import br.com.andriuscastro.firstapp.repositories.IOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
