@@ -20,7 +20,8 @@ public class Category  implements Serializable {
     @Column(length = 150, unique = true)
     private String name;
 
-    @Transient
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
     public Category() {
