@@ -1,6 +1,7 @@
 package br.com.andriuscastro.firstapp.entities;
 
 import br.com.andriuscastro.firstapp.entities.pk.OrderItemPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.util.Objects;
 @Table(name = "order_item")
 public class OrderItem implements Serializable {
     @EmbeddedId
-    private OrderItemPk id;
+    private OrderItemPk id = new OrderItemPk();
 
     @Column
     private Integer quantity;
@@ -38,6 +39,7 @@ public class OrderItem implements Serializable {
         this.id.setProduct(product);
     }
 
+    @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
