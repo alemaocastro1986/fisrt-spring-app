@@ -2,6 +2,7 @@ package br.com.andriuscastro.firstapp.services;
 
 import br.com.andriuscastro.firstapp.entities.User;
 import br.com.andriuscastro.firstapp.repositories.IUserRepository;
+import br.com.andriuscastro.firstapp.share.exceptions.ServiceResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class UserService {
 
     public User findById(Long id){
      Optional<User> user =  userRepository.findById(id);
-     return user.get();
+     return user.orElseThrow(() -> new ServiceResourceNotFoundException(id));
     }
 
     public User store(User user){
