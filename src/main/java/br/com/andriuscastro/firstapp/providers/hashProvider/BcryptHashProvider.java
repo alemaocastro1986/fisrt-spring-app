@@ -1,7 +1,9 @@
 package br.com.andriuscastro.firstapp.providers.hashProvider;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BcryptHashProvider implements IHashProvider{
     private Integer salt = 10;
     @Override
