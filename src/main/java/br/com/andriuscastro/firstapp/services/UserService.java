@@ -27,4 +27,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void destroy(Long id){
+        userRepository.deleteById(id);
+    }
+
+
 }
