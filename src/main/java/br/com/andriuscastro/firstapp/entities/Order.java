@@ -2,6 +2,7 @@ package br.com.andriuscastro.firstapp.entities;
 
 import br.com.andriuscastro.firstapp.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -88,6 +89,14 @@ public class Order implements Serializable {
 
     public Set<OrderItem> getItems(){
         return items;
+    }
+
+    public Double getTotal(){
+        double total =0;
+        for (OrderItem oi :  items) {
+            total += oi.getSubTotal();
+        }
+        return total;
     }
 
     @Override
