@@ -1,4 +1,4 @@
-package br.com.andriuscastro.firstapp.share.exceptions;
+package br.com.andriuscastro.firstapp.share.exceptions.common;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
