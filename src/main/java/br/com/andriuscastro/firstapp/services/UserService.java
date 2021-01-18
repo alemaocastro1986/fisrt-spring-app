@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,12 +32,16 @@ public class UserService {
     }
 
     public User update(Long id, User user) {
-        User entity = userRepository.getOne(id);
-        entity.setName(user.getName());
-        entity.setEmail(user.getEmail());
-        entity.setPhone(user.getPhone());
+       try{
+           User entity = userRepository.getOne(id);
+           entity.setName(user.getName());
+           entity.setEmail(user.getEmail());
+           entity.setPhone(user.getPhone());
 
-        return userRepository.save(entity);
+           return userRepository.save(entity);
+       }catch (EntityNotFoundException e){
+           throw new ServiceResourceNotFoundException(id);
+       }
 
     }
 

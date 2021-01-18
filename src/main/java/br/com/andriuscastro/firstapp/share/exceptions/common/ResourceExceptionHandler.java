@@ -17,7 +17,7 @@ public class ResourceExceptionHandler {
     public ResponseEntity<ResourceStandardError> resourceNotFound(ServiceResourceNotFoundException sr,
                                                                   HttpServletRequest request){
 
-        String error = "Database error.";
+        String error = "Resource not found.";
         HttpStatus status = HttpStatus.NOT_FOUND;
         ResourceStandardError standardError = new ResourceStandardError(
                 Instant.now(), status.value(), error, sr.getMessage(), request.getRequestURI());
@@ -29,7 +29,7 @@ public class ResourceExceptionHandler {
     public ResponseEntity<ResourceStandardError> database(DataBaseException dbe,
                                                                   HttpServletRequest request){
 
-        String error = "Resource not found";
+        String error = "Database error";
         HttpStatus status = HttpStatus.BAD_REQUEST;
         ResourceStandardError standardError = new ResourceStandardError(
                 Instant.now(), status.value(), error, dbe.getMessage(), request.getRequestURI());
