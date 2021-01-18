@@ -1,6 +1,7 @@
 package br.com.andriuscastro.firstapp.services;
 
 import br.com.andriuscastro.firstapp.entities.User;
+import br.com.andriuscastro.firstapp.providers.hashProvider.IHashProvider;
 import br.com.andriuscastro.firstapp.repositories.IUserRepository;
 import br.com.andriuscastro.firstapp.share.exceptions.DataBaseException;
 import br.com.andriuscastro.firstapp.share.exceptions.ServiceResourceNotFoundException;
@@ -18,6 +19,9 @@ public class UserService {
     @Autowired
     private IUserRepository userRepository;
 
+    @Autowired
+    private IHashProvider hashProvider;
+
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -28,6 +32,7 @@ public class UserService {
     }
 
     public User store(User user) {
+        user.setPassword(hashProvider.generateHash(user.getPassword()));
         return userRepository.save(user);
     }
 
