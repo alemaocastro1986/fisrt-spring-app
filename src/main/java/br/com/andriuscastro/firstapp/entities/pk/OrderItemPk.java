@@ -2,6 +2,7 @@ package br.com.andriuscastro.firstapp.entities.pk;
 
 import br.com.andriuscastro.firstapp.entities.Order;
 import br.com.andriuscastro.firstapp.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -20,7 +21,6 @@ public class OrderItemPk implements Serializable {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
 
     public Order getOrder() {
         return order;
